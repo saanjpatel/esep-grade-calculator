@@ -59,7 +59,8 @@ func TestString(t *testing.T) {
 	gradeCalculator.AddGrade("open source assignment", 10, Assignment)
 	gradeCalculator.AddGrade("exam 1", 20, Exam)
 	gradeCalculator.AddGrade("essay on ai ethics", 30, Essay)
-	actual_value := gradeCalculator.assignments[0].Type.String()
+	// had to change variable otherwise I was getting build error when running unit tests
+	actual_value := gradeCalculator.grade_types[0].Type.String()
 
 	if expected_value != actual_value {
 		t.Errorf("Expected Grade Type String to return '%s'; got '%s' instead", expected_value, actual_value)
