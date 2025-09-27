@@ -91,3 +91,14 @@ func computeAverage(grade_types []Grade, gradeType string) int {
 
 	return sum / len(specific_grades)
 }
+
+// add function like getFinalGrade but for pass/fail
+func (gc *GradeCalculator) GetPassFailFinalGrade() string {
+	numericalGrade := gc.calculateNumericalGrade()
+
+	if numericalGrade >= 70 {
+		return "Pass"
+	} else {
+		return "Fail"
+	}
+}
