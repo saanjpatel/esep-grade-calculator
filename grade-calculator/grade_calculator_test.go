@@ -49,3 +49,52 @@ func TestGetGradeF(t *testing.T) {
 		t.Errorf("Expected GetGrade to return '%s'; got '%s' instead", expected_value, actual_value)
 	}
 }
+
+// test if Grade.Type.String() works
+func TestString(t *testing.T) {
+	expected_value := "assignment"
+
+	gradeCalculator := NewGradeCalculator()
+
+	gradeCalculator.AddGrade("open source assignment", 10, Assignment)
+	gradeCalculator.AddGrade("exam 1", 20, Exam)
+	gradeCalculator.AddGrade("essay on ai ethics", 30, Essay)
+	actual_value := gradeCalculator.assignments[0].Type.String()
+
+	if expected_value != actual_value {
+		t.Errorf("Expected Grade Type String to return '%s'; got '%s' instead", expected_value, actual_value)
+	}
+
+}
+
+// test that it calculates when it is supposed to be a C correctly
+func TestGetGradeC(t *testing.T) {
+	expected_value := "C"
+
+	gradeCalculator := NewGradeCalculator()
+
+	gradeCalculator.AddGrade("open source assignment", 72, Assignment)
+	gradeCalculator.AddGrade("exam 1", 74, Exam)
+	gradeCalculator.AddGrade("essay on ai ethics", 76, Essay)
+	actual_value := gradeCalculator.GetFinalGrade()
+
+	if expected_value != actual_value {
+		t.Errorf("Expected GetGrade to return '%s'; got '%s' instead", expected_value, actual_value)
+	}
+}
+
+// test that it calculates when it is supposed to be a D correctly
+func TestGetGradeD(t *testing.T) {
+	expected_value := "D"
+
+	gradeCalculator := NewGradeCalculator()
+
+	gradeCalculator.AddGrade("open source assignment", 62, Assignment)
+	gradeCalculator.AddGrade("exam 1", 64, Exam)
+	gradeCalculator.AddGrade("essay on ai ethics", 66, Essay)
+	actual_value := gradeCalculator.GetFinalGrade()
+
+	if expected_value != actual_value {
+		t.Errorf("Expected GetGrade to return '%s'; got '%s' instead", expected_value, actual_value)
+	}
+}
